@@ -35,3 +35,9 @@ server.listen(3000, (err, address) => {
   server.log.info(`server listening on ${address}`)
 })
 ```
+
+4. Add a logger
+> Pino Logger https://github.com/pinojs/pino
+```
+npm i pino
+```
