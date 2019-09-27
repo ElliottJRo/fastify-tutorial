@@ -1,0 +1,22 @@
+{
+  "extends": "airbnb-base",
+  "plugins": [
+    "import"
+  ],
+  "env": {},
+  "rules": {
+    "arrow-body-style": "off",
+    "class-methods-use-this": "off",
+    "comma-dangle": ["error", "never"],
+    "global-require": "off",
+    "import/default": "warn",
+    "import/named": "error",
+    "no-alert": "error",
+    "no-bitwise": "off",
+    "no-console": "error",
+    "no-underscore-dangle": "off",
+    "padded-blocks": "error",
+    "semi": ["error", "never"],
+    "quotes": ["error", "single"]
+  }
+}

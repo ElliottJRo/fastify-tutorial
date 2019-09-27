@@ -1,13 +1,13 @@
 # From scratch
-1. Create github repo
+### 1. Create github repo
 ```sh
 git init
 ```
-2. Create npm project
+### 2. Create npm project
 ```sh
 npm init
 ```
-3. Add fastify
+### 3. Add fastify
 > From https://github.com/fastify/fastify/blob/master/docs/Getting-Started.md
 ```sh
 npm i fastify
@@ -36,13 +36,13 @@ server.listen(3000, (err, address) => {
 })
 ```
 
-4. Add a logger
+### 4. Add a logger
 > Pino Logger https://github.com/pinojs/pino
 ```
 npm i pino
 ```
 
-5. Pretty print logger
+### 5. Pretty print logger
 ```
 npm i pino-pretty
 ```

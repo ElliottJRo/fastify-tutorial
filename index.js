@@ -7,12 +7,12 @@ const server = fastify({
 })
 
 // Declare a route
-server.get('/', function (request, reply) {
+server.get('/', (request, reply) => {
   reply.send({ hello: 'world' })
 })
 
 // Run the server!
-server.listen(3000, function (err, address) {
+server.listen(3000, (err, address) => {
   if (err) {
     server.log.error(err)
     process.exit(1)
