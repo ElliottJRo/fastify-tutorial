@@ -41,3 +41,17 @@ server.listen(3000, (err, address) => {
 ```
 npm i pino
 ```
+
+5. Pretty print logger
+```
+npm i pino-pretty
+```
+
+```js
+const pino = require('pino')
+
+module.exports = pino({
+  level: 'trace',
+  prettyPrint: true
+})
+```
