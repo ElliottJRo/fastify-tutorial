@@ -38,12 +38,12 @@ server.listen(3000, (err, address) => {
 
 ### 4. Add a logger
 > Pino Logger https://github.com/pinojs/pino
-```
+```sh
 npm i pino
 ```
 
 ### 5. Pretty print logger
-```
+```sh
 npm i pino-pretty
 ```
 
@@ -54,4 +54,16 @@ module.exports = pino({
   level: 'trace',
   prettyPrint: true
 })
+```
+
+### 6. Add eslint
+```sh
+npm i eslint
+```
+
+We will use airbnb base as an starting point
+> https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base#usage
+
+```sh
+npx install-peerdeps --dev eslint-config-airbnb-base
 ```
