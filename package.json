@@ -8,7 +8,11 @@
     "npm": "6.9.0"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "npx nodemon index.js",
+    "lint": "npx npm-run-all lint:*",
+    "lint:js": "npx eslint .",
+    "lint:audit": "npm audit",
+    "lint:outdated": "npx updated",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
