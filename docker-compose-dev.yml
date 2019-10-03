@@ -1,0 +1,16 @@
+# Extends the base docker-compose.yml file for local development
+# Usage: docker-compose -f docker-compose.yml -f docker-compose-dev.yml up -d --build app
+
+version: '3'
+services:
+  mariadb:
+    container_name: docker-db
+    image: mariadb:10.1
+    expose:
+      - 3306
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data:/var/lib/mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true

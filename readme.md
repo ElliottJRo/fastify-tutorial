@@ -67,3 +67,47 @@ We will use airbnb base as an starting point
 ```sh
 npx install-peerdeps --dev eslint-config-airbnb-base
 ```
+
+### 7. Add a local docker database
+Make sure you have docker
+```sh
+docker-compose --version
+```
+
+Create a docker-compose yml file
+```sh
+touch docker-compose-dev.yml
+```
+
+Ensure spacing is right
+```yml
+version: '3'
+services:
+  mariadb:
+    container_name: docker-db
+    # using a premade image
+    image: mariadb:10.1
+    # this is the external port (outside of docker)
+    expose:
+      - 3306
+    # this is the mapping between external and internal (inside docker)
+    ports:
+      - 3306:3306
+    volumes:
+      # ensure to add data to gitignore so we dont add db to git
+      - ./data:/var/lib/mysql
+    # add any more environemnt variables (we can also add password / username for mysql here)
+    #  Usually this can be passed via pipeline / container orchestration like kubernetes
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+```
+
+Add npm scripts so it boots up each time we run dev
+```json
+{
+  "dev": "npm-run-all dev-db:up dev-server:up",
+  "dev-db:up": "docker-compose -f docker-compose-dev.yml up -d",
+  "dev-db:down": "docker-compose -f docker-compose-dev.yml down",
+  "dev-server:up": "npx nodemon index.js"
+}
+```
