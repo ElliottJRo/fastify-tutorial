@@ -13,8 +13,9 @@
     "lint:js": "npx eslint .",
     "lint:audit": "npm audit",
     "lint:outdated": "npx updated",
-    "dev": "npm-run-all dev-db:up dev-server:up",
+    "dev": "npm-run-all dev-db:up dev-db:create dev-server:up",
     "dev-db:up": "docker-compose -f docker-compose-dev.yml up -d",
+    "dev-db:create": "node ./scripts/ensure-db-exists",
     "dev-db:down": "docker-compose -f docker-compose-dev.yml down",
     "dev-server:up": "npx nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,11 +23,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "child-process-promise": "^2.2.1",
     "fastify": "^2.8.0",
     "mysql2": "^1.7.0",
     "pino": "^5.13.3",
     "pino-pretty": "^3.2.1",
-    "sequelize": "^5.19.2"
+    "sequelize": "^5.19.2",
+    "sequelize-cli": "^5.5.1"
   },
   "devDependencies": {
     "eslint": "^6.1.0",
