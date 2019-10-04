@@ -69,6 +69,7 @@ npx install-peerdeps --dev eslint-config-airbnb-base
 ```
 
 ### 7. Add a local docker database
+> https://docs.docker.com/docker-for-mac/install/
 Make sure you have docker
 ```sh
 docker-compose --version
@@ -110,4 +111,55 @@ Add npm scripts so it boots up each time we run dev
   "dev-db:down": "docker-compose -f docker-compose-dev.yml down",
   "dev-server:up": "npx nodemon index.js"
 }
+```
+
+### 8. Add ORM (sequelize)
+> https://sequelize.org/master/manual/getting-started.html
+```sh
+npm i sequelize
+```
+
+Since we setup mariadb (fork of mysql) it uses mysql driver so we will install mysql driver
+```sh
+# mysql2 is a bit faster and more secure version so we will be using mysql2 driver
+npm i mysql2
+```
+
+Add sequelize cli config file
+```json
+{
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "database",
+    "host": "localhost",
+    "dialect": "mysql",
+    "port": 3306,
+    "maxIdleTime": 2
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
+```
+
+Create the main db so we can connect to it
+```sh
+npx sequelize db:create
+```
+
+Add a main connection file
+```js
+const Sequelize = require('sequelize')
+
+const sequelize = new Sequelize('database', 'root', null, {
+  host: 'localhost',
+  dialect: 'mysql'
+})
+
+module.exports = sequelize
 ```
